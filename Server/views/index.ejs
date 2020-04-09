@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery.min.js"></script>
+    <script src="socket.io/socket.io.js"></script>
+
+    <script>
+             var socket = io("http://localhost:5300");
+
+             $(document).ready(function(){
+                $("#mrA").click(function(){
+                //kết nối serce [ Client -send-data] - client(tham số kết nối) - send data dữ liệu muốn truyền lên
+                //emit là phát tín hiệu    
+                var token       =  $("#token").val();
+                var title       =  $("#title").val();
+                var body        =  $("#body").val();
+                var message     =  $("#message").val(); 
+
+                var data = '{"title":"'+ title +'","body":"'+ body +'","message":"'+ message +'","token":"'+ token +'"}'
+                   console.log(data)
+                    socket.emit("Client-send-data", data);
+                    // socket.emit("Client-send-data");
+
+                 });
+             })
+    </script>
+</head>
+<body>
+    Token Id<input type="text" value="" id="token">
+    title   <input type="text" value="" id="title">
+    body    <input type="text" value="" id="body">
+    message <input type="text" value="" id="message">
+    <input type="button" value="dangky" id="mrA">
+</body>
+</html>

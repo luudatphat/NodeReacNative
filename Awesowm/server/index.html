@@ -1,0 +1,12 @@
+<h1>Webcome</h1>
+
+<button>Upload</button>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    var socket = io();
+    var button = document.querySelector('button');
+    button.onclick = function(){
+        console.log('wo');
+        socket.emit('update');
+    }
+</script>
